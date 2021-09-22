@@ -10,6 +10,8 @@ const connect = function () {
   conn.on("connect", () => {
     console.log('Connection Established!');
   })
+  conn.write('Name: SJS');
+
   conn.on('data', (data) => {
     console.log(data.toString());
     conn.end();
