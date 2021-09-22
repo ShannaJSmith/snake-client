@@ -9,8 +9,14 @@ const connect = function () {
   conn.setEncoding("utf8");
   conn.on("connect", () => {
     console.log('Connection Established!');
+    conn.write('Name: SJS');
+    setInterval(() => {
+      //conn.write('Move: up');
+    }, 2000);
+    setInterval(() => {
+      //conn.write('Move: left');
+    }, 4000);
   })
-  conn.write('Name: SJS');
 
   conn.on('data', (data) => {
     console.log(data.toString());
