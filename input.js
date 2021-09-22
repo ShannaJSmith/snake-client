@@ -1,4 +1,5 @@
 const { createConnection } = require("net");
+const {keyMappings} = require('./constants');
 let connection;
 
 const setupInput = function (conn) {
@@ -14,21 +15,24 @@ const setupInput = function (conn) {
 const handleUserInput = function (data) {
   if (data === "\u0003") {
     process.exit();
-  } else if (data === 'w') {
-    console.log("UP");
-    connection.write("Move: up");
-  } else if (data === 'a') {
-    console.log("LEFT");
-    connection.write("Move: left");
-  } else if (data === 's') {
-    console.log("DOWN");
-    connection.write("Move: down");
-  } else if (data === 'd') {
-    console.log("RIGHT");
-    connection.write("Move: right");
-  } else if (data === 'h') {
-    connection.write("Say: YOLO");
+  } else if (data in keyMappings) {
+    connection.write(keyMappings[data]);
   }
+  // } else if (data === 'w') {
+  //   console.log("UP");
+  //   connection.write("Move: up");
+  // } else if (data === 'a') {
+  //   console.log("LEFT");
+  //   connection.write("Move: left");
+  // } else if (data === 's') {
+  //   console.log("DOWN");
+  //   connection.write("Move: down");
+  // } else if (data === 'd') {
+  //   console.log("RIGHT");
+  //   connection.write("Move: right");
+  // } else if (data === 'y') {
+  //   connection.write("Say: YOLO");
+  // }
 };
 
 module.exports = {setupInput};
