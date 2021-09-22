@@ -10,12 +10,13 @@ const connect = function () {
   conn.on("connect", () => {
     console.log('Connection Established!');
     conn.write('Name: SJS');
+    // setTimeout (() => {conn.write('Move: up')}, 500);
     setInterval(() => {
       //conn.write('Move: up');
-    }, 2000);
+    }, 500);
     setInterval(() => {
       //conn.write('Move: left');
-    }, 4000);
+    }, 600);
   })
 
   conn.on('data', (data) => {
